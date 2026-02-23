@@ -19,28 +19,46 @@ class Project {
 class ProjectConfig {
   static const List<Project> projects = [
     Project(
-      title: 'E-Commerce Dashboard',
-      description: 'A comprehensive admin dashboard for managing products, orders, and users with real-time analytics.',
-      imageUrl: 'assets/images/project1.png', // Ideally use real assets or network images in real life
-      demoUrl: 'https://demo.example.com',
-      githubUrl: 'https://github.com/example/repo',
-      tags: ['Flutter Web', 'Firebase', 'Provider'],
+      title: 'Roentzen – Mobile Diagnosis & Healthcare System',
+      description:
+          'Built a healthcare application with appointment scheduling, diagnosis management, and billing, ensuring secure, role-based access and consistent data handling.',
+      imageUrl: 'images/roentgen.png',
+      demoUrl: 'https://roentgenhealthcare.com/#/home',
+      githubUrl: '',
+      tags: ['User Aplication', 'Client Only Admin Application'],
     ),
     Project(
-      title: 'Task Management App',
-      description: 'Mobile application to track daily tasks, set priorities, and collaborate with team members.',
-      imageUrl: 'assets/images/project2.png',
-      demoUrl: '',
-      githubUrl: 'https://github.com/example/repo2',
-      tags: ['Flutter', 'Node.js', 'MongoDB'],
+      title: 'VaranousLabs – Pharma Composition Ordering Platform',
+      description:
+          'Developed a chemical and pharmaceutical ordering platform with customer and admin interfaces, an HRMS module, and backend services for order processing, billing, and employee management.',
+      imageUrl: 'images/varanous_labs.png',
+      demoUrl: 'https://www.varanouslabs.com/',
+      githubUrl: '',
+      tags: ['User Application', 'Client Only Admin Application'],
+    ),
+    Project(
+      title: 'School Book ERP',
+      description:
+          'Developed a full-fledged school ERP system with admin, teacher, and student modules, managing attendance, academics, fees, and role-based dashboards.',
+      imageUrl: 'images/school_book.png',
+      demoUrl: 'https://www.schoolbookapp.com/',
+      githubUrl: '',
+      tags: [
+        'Student App',
+        'Teacher App',
+        'HRMS',
+        'Admin Application',
+        'Microservices',
+      ],
     ),
     Project(
       title: 'Portfolio Template',
-      description: 'A clean, responsive, and completely customizable portfolio template built with Flutter.',
-      imageUrl: 'assets/images/project3.png',
-      demoUrl: 'https://portfolio.example.com',
-      githubUrl: 'https://github.com/example/repo3',
-      tags: ['Flutter Web', 'Clean UI', 'Animations'],
+      description:
+          'A clean, responsive, and completely customizable portfolio template built with Flutter.',
+      imageUrl: 'images/portfolio.png',
+      demoUrl: '',
+      githubUrl: 'https://github.com/Lohith-Ram-Vallabhu/Portfolio',
+      tags: ['Flutter Web', 'Clean UI', 'Beautification'],
     ),
   ];
 }

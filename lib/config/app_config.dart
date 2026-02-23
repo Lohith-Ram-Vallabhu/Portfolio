@@ -9,6 +9,7 @@ class AppConfig {
 
   // Contact Info
   static const String email = 'lohitramvallabu378@gmail.com';
+  static const String whatsappNumber = '9390893971';
 
   // Social Links
   static const String githubUrl = 'https://github.com/Lohith-Ram-Vallabhu';
