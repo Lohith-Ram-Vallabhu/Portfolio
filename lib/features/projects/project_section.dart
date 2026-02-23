@@ -16,14 +16,18 @@ class ProjectSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: context.responsive(ThemeConfig.spacingMedium, ThemeConfig.spacingLarge, ThemeConfig.sectionPadding),
+        horizontal: context.responsive(
+          ThemeConfig.spacingMedium,
+          ThemeConfig.spacingLarge,
+          ThemeConfig.sectionPadding,
+        ),
         vertical: ThemeConfig.sectionPadding,
       ),
       child: Column(
         children: [
           const FadeSlideY(child: SectionTitle(title: 'My Projects')),
           const SizedBox(height: ThemeConfig.spacingLarge * 2),
-          
+
           Wrap(
             alignment: WrapAlignment.center,
             spacing: ThemeConfig.spacingLarge,
@@ -71,7 +75,7 @@ class _ProjectCard extends StatelessWidget {
               color: ThemeConfig.background.withAlpha(200),
               blurRadius: 20,
               offset: const Offset(0, 10),
-            )
+            ),
           ],
         ),
         clipBehavior: Clip.antiAlias,
@@ -84,11 +88,27 @@ class _ProjectCard extends StatelessWidget {
               height: 200,
               width: double.infinity,
               color: ThemeConfig.background,
-              child: const Center(
-                child: Icon(Icons.image, color: ThemeConfig.textSecondary, size: 50),
-              ), // Use NetworkImage/AssetImage in reality
+              margin: const EdgeInsets.all(ThemeConfig.spacingSmall),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(ThemeConfig.borderRadius),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child: project.imageUrl.isNotEmpty
+                      ? Image.asset(
+                          project.imageUrl,
+                          fit: BoxFit.cover,
+                          key: ValueKey(project.imageUrl),
+                        )
+                      : const Icon(
+                          Icons.image_outlined,
+                          key: ValueKey('placeholder'),
+                          color: ThemeConfig.textSecondary,
+                          size: 50,
+                        ),
+                ),
+              ),
             ),
-            
+
             Padding(
               padding: const EdgeInsets.all(ThemeConfig.spacingLarge),
               child: Column(
@@ -114,16 +134,18 @@ class _ProjectCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: ThemeConfig.spacingMedium),
-                  
+
                   // Tags
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: project.tags.map((tag) => _buildTag(tag)).toList(),
+                    children: project.tags
+                        .map((tag) => _buildTag(tag))
+                        .toList(),
                   ),
-                  
+
                   const SizedBox(height: ThemeConfig.spacingLarge),
-                  
+
                   // Buttons
                   Row(
                     children: [
@@ -136,10 +158,11 @@ class _ProjectCard extends StatelessWidget {
                             onPressed: () => _launchUrl(project.githubUrl),
                           ),
                         ),
-                        
-                      if (project.githubUrl.isNotEmpty && project.demoUrl.isNotEmpty)
+
+                      if (project.githubUrl.isNotEmpty &&
+                          project.demoUrl.isNotEmpty)
                         const SizedBox(width: ThemeConfig.spacingSmall),
-                        
+
                       if (project.demoUrl.isNotEmpty)
                         Expanded(
                           child: CustomButton(
