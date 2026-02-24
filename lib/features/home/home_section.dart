@@ -127,6 +127,10 @@ class HomeSection extends StatelessWidget {
                               FontAwesomeIcons.instagram,
                               AppConfig.instagramUrl,
                             ),
+                            _buildSocialIcon(
+                              FontAwesomeIcons.whatsapp,
+                              AppConfig.whatsAppUrl,
+                            ),
                           ],
                         ),
                       ],

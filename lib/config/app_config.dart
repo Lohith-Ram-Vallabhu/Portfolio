@@ -16,4 +16,5 @@ class AppConfig {
   static const String linkedinUrl =
       'https://www.linkedin.com/in/vallabhu-lohith-ram-fullstack/';
   static const String instagramUrl = 'https://www.instagram.com/_lohith_ram/';
+  static const String whatsAppUrl = 'https://wa.me/${AppConfig.whatsappNumber}';
 }

@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../config/app_config.dart';
 
 class WhatsAppHelper {
-  static Future<void> sendMessage({
+  static Future<void> sendContactMessage({
     required String name,
     required String email,
     required String message,
@@ -18,6 +18,11 @@ class WhatsAppHelper {
     final String url =
         'https://wa.me/${AppConfig.whatsappNumber}?text=$whatsappMessage';
 
+    await _launchUrl(url);
+  }
+
+  static Future<void> openWhatsAppChat() async {
+    final String url = 'https://wa.me/${AppConfig.whatsappNumber}';
     await _launchUrl(url);
   }
 

@@ -4,6 +4,7 @@ import '../config/theme_config.dart';
 import '../core/extensions/responsive_extension.dart';
 import '../features/about/about_section.dart';
 import '../features/contact/contact_section.dart';
+import '../features/experience/experience_section.dart';
 import '../features/home/home_section.dart';
 import '../features/projects/project_section.dart';
 import '../features/skills/skill_section.dart';
@@ -43,6 +44,7 @@ class _PortfolioScaffoldState extends State<PortfolioScaffold> {
   // Keys for scrolling
   final _homeKey = GlobalKey();
   final _aboutKey = GlobalKey();
+  final _experienceKey = GlobalKey();
   final _skillsKey = GlobalKey();
   final _projectsKey = GlobalKey();
   final _contactKey = GlobalKey();
@@ -78,6 +80,7 @@ class _PortfolioScaffoldState extends State<PortfolioScaffold> {
             children: [
               SizedBox(key: _homeKey, child: const HomeSection()),
               SizedBox(key: _aboutKey, child: const AboutSection()),
+              SizedBox(key: _experienceKey, child: const ExperienceSection()),
               SizedBox(key: _skillsKey, child: const SkillSection()),
               SizedBox(key: _projectsKey, child: const ProjectSection()),
               SizedBox(key: _contactKey, child: const ContactSection()),
@@ -92,6 +95,7 @@ class _PortfolioScaffoldState extends State<PortfolioScaffold> {
     final navItems = [
       _NavItem('Home', () => _scrollTo(_homeKey)),
       _NavItem('About', () => _scrollTo(_aboutKey)),
+      _NavItem('Experience', () => _scrollTo(_experienceKey)),
       _NavItem('Skills', () => _scrollTo(_skillsKey)),
       _NavItem('Projects', () => _scrollTo(_projectsKey)),
       _NavItem('Contact', () => _scrollTo(_contactKey)),

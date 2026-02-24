@@ -90,7 +90,7 @@ class _ContactSectionState extends State<ContactSection> {
                     alignment: Alignment.centerRight,
                     child: CustomButton(
                       text: 'Send a message',
-                      onPressed: () => WhatsAppHelper.sendMessage(
+                      onPressed: () => WhatsAppHelper.sendContactMessage(
                         name: _nameController.text,
                         email: _emailController.text,
                         message: _messageController.text,
@@ -113,6 +113,10 @@ class _ContactSectionState extends State<ContactSection> {
               _buildSocialIcon(
                 FontAwesomeIcons.instagram,
                 AppConfig.instagramUrl,
+              ),
+              _buildSocialIcon(
+                FontAwesomeIcons.whatsapp,
+                AppConfig.whatsAppUrl,
               ),
             ],
           ),
