@@ -6,6 +6,8 @@ import '../../core/animations/fade_slide_y.dart';
 import '../../core/download_resume/download_resume.dart';
 import '../../core/extensions/responsive_extension.dart';
 import '../../core/widgets/custom_button.dart';
+import '../../core/widgets/glossy_social_icon.dart';
+import 'widgets/animated_avatar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeSection extends StatelessWidget {
@@ -140,39 +142,14 @@ class HomeSection extends StatelessWidget {
               ),
             ),
 
-            // Avatar image could go here, for now a glow accent circle
+            // Avatar image with floating interactive icons
             FadeSlideY(
               delay: 0.5,
-              child: Container(
-                width: context.responsive(250, 350, 450),
-                height: context.responsive(250, 350, 450),
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: ThemeConfig.accentGradient,
-                  boxShadow: [
-                    BoxShadow(
-                      color: ThemeConfig.glowColor,
-                      blurRadius: 100,
-                      spreadRadius: 20,
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Container(
-                    width: 200, // set size explicitly
-                    height: 200,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: ThemeConfig.background,
-                    ),
-                    child: ClipOval(
-                      child: Image.asset(
-                        'images/low_light_profile.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+              child: AnimatedAvatar(
+                size: context.responsive(250, 350, 450),
+                avatarImage: Image.asset(
+                  'assets/images/low_light_profile.webp',
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -183,13 +160,31 @@ class HomeSection extends StatelessWidget {
   }
 
   Widget _buildSocialIcon(IconData icon, String url) {
+    Color iconColor = Colors.white;
+    Color glowColor = Colors.white;
+
+    if (icon == FontAwesomeIcons.github) {
+      iconColor = Colors.white;
+      glowColor = Colors.white;
+    } else if (icon == FontAwesomeIcons.linkedinIn) {
+      iconColor = const Color(0xFF0077b5);
+      glowColor = const Color(0xFF0077b5);
+    } else if (icon == FontAwesomeIcons.whatsapp) {
+      iconColor = const Color(0xFF25D366);
+      glowColor = const Color(0xFF25D366);
+    } else if (icon == FontAwesomeIcons.instagram) {
+      iconColor = const Color(0xFFE1306C);
+      glowColor = const Color(0xFFE1306C);
+    }
+
     return Padding(
-      padding: const EdgeInsets.only(left: ThemeConfig.spacingSmall),
-      child: IconButton(
-        icon: FaIcon(icon, color: ThemeConfig.textSecondary, size: 20),
-        onPressed: () => _launchUrl(url),
-        hoverColor: ThemeConfig.glowColor.withAlpha(50),
-        splashRadius: 24,
+      padding: const EdgeInsets.only(left: ThemeConfig.spacingMedium),
+      child: GlossySocialIcon(
+        icon: icon,
+        url: url,
+        onTap: () => _launchUrl(url),
+        iconColor: iconColor,
+        glowColor: glowColor,
       ),
     );
   }

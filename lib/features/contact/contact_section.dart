@@ -5,6 +5,7 @@ import '../../core/animations/fade_slide_y.dart';
 import '../../core/extensions/responsive_extension.dart';
 import '../../core/whatsapp_sender/whatsapp_sender.dart';
 import '../../core/widgets/custom_button.dart';
+import '../../core/widgets/glossy_social_icon.dart';
 import '../../core/widgets/section_title.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -152,12 +153,31 @@ class _ContactSectionState extends State<ContactSection> {
   }
 
   Widget _buildSocialIcon(IconData icon, String url) {
+    Color iconColor = Colors.white;
+    Color glowColor = Colors.white;
+
+    if (icon == FontAwesomeIcons.github) {
+      iconColor = Colors.white;
+      glowColor = Colors.white;
+    } else if (icon == FontAwesomeIcons.linkedinIn) {
+      iconColor = const Color(0xFF0077b5);
+      glowColor = const Color(0xFF0077b5);
+    } else if (icon == FontAwesomeIcons.whatsapp) {
+      iconColor = const Color(0xFF25D366);
+      glowColor = const Color(0xFF25D366);
+    } else if (icon == FontAwesomeIcons.instagram) {
+      iconColor = const Color(0xFFE1306C);
+      glowColor = const Color(0xFFE1306C);
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: ThemeConfig.spacingSmall),
-      child: IconButton(
-        icon: FaIcon(icon, color: ThemeConfig.textSecondary, size: 24),
-        onPressed: () => _launchUrl(url),
-        hoverColor: ThemeConfig.glowColor.withAlpha(50),
+      child: GlossySocialIcon(
+        icon: icon,
+        url: url,
+        onTap: () => _launchUrl(url),
+        iconColor: iconColor,
+        glowColor: glowColor,
       ),
     );
   }

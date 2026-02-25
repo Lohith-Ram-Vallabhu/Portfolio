@@ -44,7 +44,7 @@ class AboutSection extends StatelessWidget {
                     ),
                     image: const DecorationImage(
                       image: AssetImage(
-                        'images/profile.png',
+                        'assets/images/profile.webp',
                       ), // Replace or remove
                       fit: BoxFit.cover,
                     ),
