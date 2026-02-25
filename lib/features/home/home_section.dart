@@ -104,38 +104,44 @@ class HomeSection extends StatelessWidget {
                   const SizedBox(height: ThemeConfig.spacingLarge),
                   FadeSlideY(
                     delay: 0.4,
-                    child: Row(
-                      mainAxisAlignment: context.isMobile
-                          ? MainAxisAlignment.center
-                          : MainAxisAlignment.start,
-                      children: [
-                        CustomButton(
-                          text: 'Download CV',
-                          icon: Icons.download,
-                          onPressed: downloadResume, // Handle CV download later
-                        ),
-                        const SizedBox(width: ThemeConfig.spacingMedium),
-                        Row(
-                          children: [
-                            _buildSocialIcon(
-                              FontAwesomeIcons.github,
-                              AppConfig.githubUrl,
-                            ),
-                            _buildSocialIcon(
-                              FontAwesomeIcons.linkedinIn,
-                              AppConfig.linkedinUrl,
-                            ),
-                            _buildSocialIcon(
-                              FontAwesomeIcons.instagram,
-                              AppConfig.instagramUrl,
-                            ),
-                            _buildSocialIcon(
-                              FontAwesomeIcons.whatsapp,
-                              AppConfig.whatsAppUrl,
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      padding: EdgeInsets.all(5),
+                      child: Row(
+                        mainAxisAlignment: context.isMobile
+                            ? MainAxisAlignment.center
+                            : MainAxisAlignment.start,
+                        children: [
+                          CustomButton(
+                            text: 'Download CV',
+                            icon: Icons.download,
+                            onPressed:
+                                downloadResume, // Handle CV download later
+                          ),
+                          const SizedBox(width: ThemeConfig.spacingMedium),
+                          Row(
+                            children: [
+                              _buildSocialIcon(
+                                FontAwesomeIcons.github,
+                                AppConfig.githubUrl,
+                              ),
+                              _buildSocialIcon(
+                                FontAwesomeIcons.linkedinIn,
+                                AppConfig.linkedinUrl,
+                              ),
+                              _buildSocialIcon(
+                                FontAwesomeIcons.instagram,
+                                AppConfig.instagramUrl,
+                              ),
+                              _buildSocialIcon(
+                                FontAwesomeIcons.whatsapp,
+                                AppConfig.whatsAppUrl,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
